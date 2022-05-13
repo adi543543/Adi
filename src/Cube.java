@@ -38,7 +38,6 @@ public class Cube {
         return this.cube;
     }
 
-    // working!!!!!
     public void up(boolean dir) {
         this.cube[SIDES.YELLOW.ordinal()].new_rotateFace(dir); // check why not working!!!
         ArrayList<Color> arr = new ArrayList<>(4 * this.sizeOfCube.getSizeOfCube());
@@ -66,7 +65,6 @@ public class Cube {
         }
     }
 
-    // working!!!!!
     public void down(boolean dir){
         this.cube[SIDES.WHITE.ordinal()].new_rotateFace(dir);
         ArrayList<Color> arr = new ArrayList<>(4 * this.sizeOfCube.getSizeOfCube());
@@ -94,7 +92,6 @@ public class Cube {
         }
     }
 
-    // not working!!!!!
     public void left(boolean dir){
         this.cube[SIDES.RED.ordinal()].new_rotateFace(dir);
         ArrayList<Color> arr = new ArrayList<>(4 * this.sizeOfCube.getSizeOfCube());
@@ -138,7 +135,6 @@ public class Cube {
         }
     }
 
-    // working!!!!!
     public void right(boolean dir){
         this.cube[SIDES.ORANGE.ordinal()].new_rotateFace(dir);
         ArrayList<Color> arr = new ArrayList<>(4 * this.sizeOfCube.getSizeOfCube());
@@ -202,10 +198,10 @@ public class Cube {
             for (int i = 0; i < 4; i++) {
                 int index = (i * 3 + 3) % 12;
                 if(i == 1){
-                    this.cube[indexArr[i]].rotateSide(false, 0, arr.subList(index, index + 3 ).toArray(new Color[0]), true);
+                    this.cube[indexArr[i]].rotateSide(false, 0, arr.subList(index, index + 3 ).toArray(new Color[0]), false);
                 }
                 else {
-                    this.cube[indexArr[i]].rotateSide(i % 2 == 0, this.sizeOfCube.getSizeOfCube() - 1, arr.subList(index, index + 3 ).toArray(new Color[0]), i == 2);
+                    this.cube[indexArr[i]].rotateSide(i % 2 == 0, this.sizeOfCube.getSizeOfCube() - 1, arr.subList(index, index + 3 ).toArray(new Color[0]), i == 2 || i == 3);
                 }
 
             }
@@ -217,29 +213,41 @@ public class Cube {
                     index = (i * 3 - 3) % 12;
                 }
                 if(i == 1){
-                    this.cube[indexArr[i]].rotateSide(false, 0, arr.subList(index, index + 3 ).toArray(new Color[0]), true);
+                    this.cube[indexArr[i]].rotateSide(false, 0, arr.subList(index, index + 3 ).toArray(new Color[0]), false);
                 }
                 else {
-                    this.cube[indexArr[i]].rotateSide(i % 2 == 0, this.sizeOfCube.getSizeOfCube() - 1, arr.subList(index, index + 3 ).toArray(new Color[0]), i % 2 == 0);
+                    this.cube[indexArr[i]].rotateSide(i % 2 == 0, this.sizeOfCube.getSizeOfCube() - 1, arr.subList(index, index + 3 ).toArray(new Color[0]), i == 0 || i == 3);
                 }
             }
         }
     }
 
     public void back(boolean dir){
-        this.cube[SIDES.WHITE.ordinal()].new_rotateFace(dir);
+        this.cube[SIDES.BLUE.ordinal()].new_rotateFace(dir);
         ArrayList<Color> arr = new ArrayList<>(4 * this.sizeOfCube.getSizeOfCube());
 
-        arr.addAll(Arrays.asList(this.cube[SIDES.ORANGE.ordinal()].getRowOrColumnColors(true, this.sizeOfCube.getSizeOfCube() - 1, false)));
-        arr.addAll(Arrays.asList(this.cube[SIDES.GREEN.ordinal()].getRowOrColumnColors(true, this.sizeOfCube.getSizeOfCube() - 1, false)));
-        arr.addAll(Arrays.asList(this.cube[SIDES.RED.ordinal()].getRowOrColumnColors(true, this.sizeOfCube.getSizeOfCube() - 1, false)));
-        arr.addAll(Arrays.asList(this.cube[SIDES.BLUE.ordinal()].getRowOrColumnColors(true, this.sizeOfCube.getSizeOfCube() - 1, false)));
+        arr.addAll(Arrays.asList(this.cube[SIDES.YELLOW.ordinal()].getRowOrColumnColors(true, 0, false)));
+        arr.addAll(Arrays.asList(this.cube[SIDES.RED.ordinal()].getRowOrColumnColors(false, 0, false)));
+        arr.addAll(Arrays.asList(this.cube[SIDES.WHITE.ordinal()].getRowOrColumnColors(true, 0, false)));
+        arr.addAll(Arrays.asList(this.cube[SIDES.ORANGE.ordinal()].getRowOrColumnColors(false, this.sizeOfCube.getSizeOfCube() - 1, false)));
+
+        int indexArr[] = new int[4];
+        indexArr[0] = 0;
+        indexArr[1] = 3;
+        indexArr[2] = 5;
+        indexArr[3] = 1;
 
         if(dir == false)
         {
             for (int i = 0; i < 4; i++) {
                 int index = (i * 3 + 3) % 12;
-                this.cube[i + 1].rotateSide(true, this.sizeOfCube.getSizeOfCube() - 1, arr.subList(index, index + 3 ).toArray(new Color[0]), false);
+                if(i == 3){
+                    this.cube[indexArr[i]].rotateSide(false, this.sizeOfCube.getSizeOfCube() - 1, arr.subList(index, index + 3 ).toArray(new Color[0]), false);
+                }
+                else {
+                    this.cube[indexArr[i]].rotateSide(i % 2 == 0, 0, arr.subList(index, index + 3 ).toArray(new Color[0]), i == 0 || i == 1);
+                }
+
             }
         }
         else {
@@ -248,7 +256,12 @@ public class Cube {
                 if (i > 0) {
                     index = (i * 3 - 3) % 12;
                 }
-                this.cube[i + 1].rotateSide(true, this.sizeOfCube.getSizeOfCube() - 1, arr.subList(index, index + 3 ).toArray(new Color[0]), false);
+                if(i == 3){
+                    this.cube[indexArr[i]].rotateSide(false, this.sizeOfCube.getSizeOfCube() - 1, arr.subList(index, index + 3 ).toArray(new Color[0]), false);
+                }
+                else {
+                    this.cube[indexArr[i]].rotateSide(i % 2 == 0, 0, arr.subList(index, index + 3 ).toArray(new Color[0]), i == 2 || i == 1);
+                }
             }
         }
     }

@@ -2,8 +2,7 @@ import java.util.Random;
 
 public class Model {
     private Cube fullCube;
-//    private static char moves[] = {'u', 'U', 'd', 'D', 'r', 'R', 'l', 'L', 'f', 'F', 'b', 'B'};
-    private static char moves[] = {'u', 'U', 'd', 'D', 'r', 'R', 'l', 'L'};
+    private static char moves[] = {'u', 'U', 'd', 'D', 'r', 'R', 'l', 'L', 'f', 'F', 'b', 'B'};
     private CubeSize sizeOfCube;
 
     public Model(Cube fullCube, int sizeOfCube) {
@@ -25,10 +24,10 @@ public class Model {
         String moves = "";
         int randNum1, randNum2;
 
-        randNum1 = rand.nextInt(8);
+        randNum1 = rand.nextInt(12);
         moves += this.moves[randNum1];
         while (moves.length() != numOfMoves){
-            randNum2 = rand.nextInt(8);
+            randNum2 = rand.nextInt(12);
             if (randNum1 != randNum2){
                 moves += this.moves[randNum2];
             }

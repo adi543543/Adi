@@ -35,14 +35,14 @@ public class test {
         Color[][] colors = {{Color.WHITE, Color.RED, Color.WHITE},{Color.YELLOW,Color.GREEN,Color.YELLOW},{Color.BLUE,Color.BLUE,Color.BLUE}};
 
         Cube c = new Cube(3);
-//        c.down(false);
+//        c.back(true);
 //        printCube(c, colorsDictionary);
 //
 //        System.out.println();
 //        System.out.println("hiiiiiiii");
 //        System.out.println();
 
-//        c.left(true);
+//        c.right(false);
 //        printCube(c, colorsDictionary);
 //
 //        System.out.println();
@@ -51,12 +51,12 @@ public class test {
 
 //        c.up(true);
 //        printCube(c, colorsDictionary);
-//
+
 //        System.out.println();
 //        System.out.println("hiiiiiiii");
 //        System.out.println();
 //
-//        c.down(true);
+//        c.back(true);
 //        printCube(c, colorsDictionary);
 
         Model m = new Model(3);
@@ -73,6 +73,11 @@ public class test {
 //        f.new_rotateFace(true);
 //        printFace(f, colorsDictionary);
 
-
+//        System.out.println();
+//        System.out.println();
+//        Color[] try1 =  f.getRowOrColumnColors(false, 2, false);
+//        System.out.println("regular- 0: " + colorsDictionary.get(try1[0]) + " 1: " + colorsDictionary.get(try1[1]) + " 2: " + colorsDictionary.get(try1[2]));
+//        try1 =  f.getRowOrColumnColors(false, 2, true);
+//        System.out.println("regular- 0: " + colorsDictionary.get(try1[0]) + " 1: " + colorsDictionary.get(try1[1]) + " 2: " + colorsDictionary.get(try1[2]));
     }
 }
