@@ -59,18 +59,30 @@ public class test {
 //        c.back(true);
 //        printCube(c, colorsDictionary);
 
+
+
+//        Color[][] faceColors = {{Color.YELLOW, Color.RED, Color.WHITE}, {Color.BLUE, Color.WHITE, Color.BLUE}, {Color.YELLOW, Color.RED, Color.WHITE}};
+//        Face f = new Face(Color.WHITE, 3);
+//        System.out.println(f.checkSameColor(Color.WHITE));
+//        f.setFaceColors(faceColors);
+//        printFace(f, colorsDictionary);
+//        System.out.println();
+//        System.out.println();
+//        System.out.println(f.checkSameColor(Color.WHITE));
+//        printFace(f, colorsDictionary);
+
         Model m = new Model(3);
         String moves = m.randomScramble(50);
 //        System.out.println(moves);
 
 //        String res = m.scrambleSolution(moves);
 //        System.out.println(res);
-        m.doMoves("ffbrl");
-        printCube(m.getFullCube(), colorsDictionary);
-//
-        System.out.println();
-        System.out.println("scramble cube!!!!!!!!");
-        System.out.println();
+        m.doMoves(moves);
+//        printCube(m.getFullCube(), colorsDictionary);
+////
+//        System.out.println();
+//        System.out.println("scramble cube!!!!!!!!");
+//        System.out.println();
 
 //        Color[] cr = m.getFullCube().getCube()[0].getRowOrColumnColors(true, 0, false);
 //        System.out.println(colorsDictionary.get(cr[0]) + ", " + colorsDictionary.get(cr[1]) + ", " + colorsDictionary.get(cr[2]) + ", ");
@@ -83,14 +95,6 @@ public class test {
         System.out.println();
         m.doMoves(res);
         printCube(m.getFullCube(), colorsDictionary);
-
-//        Color[][] faceColors = {{Color.YELLOW, Color.RED, Color.WHITE}, {Color.BLUE, Color.WHITE, Color.BLUE}, {Color.YELLOW, Color.RED, Color.WHITE}};
-//        Face f = new Face(faceColors, 3);
-//        printFace(f, colorsDictionary);
-//        System.out.println();
-//        System.out.println();
-//        f.new_rotateFace(true);
-//        printFace(f, colorsDictionary);
 
 //        System.out.println();
 //        System.out.println();

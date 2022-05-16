@@ -5,11 +5,13 @@ public class Model {
     private Cube fullCube;
     private CubeSize sizeOfCube;
     private SolverLevel1 al1;
+    private SolverLevel2 al2;
 
     public Model(Cube fullCube, int sizeOfCube) {
         this.fullCube = fullCube;
         this.sizeOfCube = new CubeSize(sizeOfCube);
         this.al1 = new SolverLevel1(this.fullCube.getCube(), sizeOfCube);
+        this.al2 = new SolverLevel2(this.fullCube.getCube(), sizeOfCube);
     }
 
     public Model(int sizeOfCube) {
@@ -19,6 +21,9 @@ public class Model {
 
     public SolverLevel1 getAl1() {
         return al1;
+    }
+    public SolverLevel2 getAl2() {
+        return al2;
     }
 
     public String randomScramble(int numOfMoves){
@@ -105,7 +110,9 @@ public class Model {
     public String tryAl(){
         this.al1 = new SolverLevel1(this.fullCube.getCube(), this.sizeOfCube.getSizeOfCube());
         String solution = this.al1.createCross();
-//        solution += this.al1.createWhiteFace();
+        solution += this.al1.createWhiteFace();
+        this.al2 = new SolverLevel2(this.al1.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
+        solution += this.al2.createSecondRow();
         return solution;
     }
 

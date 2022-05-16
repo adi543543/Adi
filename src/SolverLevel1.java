@@ -902,9 +902,10 @@ public class SolverLevel1 {
 
     public String createWhiteFaceWhiteFace(){
         String result = "";
-//        int countRedMoves = 0, countGreenMoves = 0, countOrangeMoves = 0, countBlueMoves = 0;
-
-        while (checkWhiteFaceWithoutCorners()){
+        int createWhiteFaceWhiteFaceCounter = 0;
+        while (checkWhiteFaceWithoutCorners() == false){
+            System.out.println("createWhiteFaceWhiteFace runs " + createWhiteFaceWhiteFaceCounter + " times!");
+            createWhiteFaceWhiteFaceCounter++;
             if (this.fullCube.getCube()[SIDES.WHITE.ordinal()].getCubie(0,0) == Color.WHITE){
                 this.fullCube.back(true);
                 this.fullCube.up(true);
@@ -953,9 +954,10 @@ public class SolverLevel1 {
 
     public String createWhiteFaceYellowFace(){
         String result = "";
-//        int countRedMoves = 0, countGreenMoves = 0, countOrangeMoves = 0, countBlueMoves = 0;
-
-        while (checkYellowFaceWithoutCorners()){
+        int createWhiteFaceYellowFaceCounter = 0;
+        while (checkYellowFaceWithoutCorners() == false){
+            System.out.println("createWhiteFaceYellowFace runs " + createWhiteFaceYellowFaceCounter + " times!");
+            createWhiteFaceYellowFaceCounter++;
             // Blue face
             if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,0) == Color.WHITE){
                 if(this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN){
@@ -989,7 +991,7 @@ public class SolverLevel1 {
             }
 
             // Orange face
-            if (this.fullCube.getCube()[SIDES.WHITE.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE){
+            if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE){
                 if(this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.RED){
                     this.fullCube.up(true);
                     this.fullCube.up(true);
@@ -1021,7 +1023,7 @@ public class SolverLevel1 {
             }
 
             // Red face
-            if (this.fullCube.getCube()[SIDES.WHITE.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,0) == Color.WHITE){
+            if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,0) == Color.WHITE){
                 if(this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE){
                     this.fullCube.up(true);
                     this.fullCube.up(true);
@@ -1053,7 +1055,7 @@ public class SolverLevel1 {
             }
 
             // Green face
-            if (this.fullCube.getCube()[SIDES.WHITE.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE){
+            if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE){
                 if(this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE){
                     this.fullCube.up(true);
                     this.fullCube.up(true);
@@ -1082,6 +1084,7 @@ public class SolverLevel1 {
                     this.fullCube.front(true);
                     result += "Fuf";
                 }
+                System.out.println("result- " + result);
             }
         }
 
@@ -1106,9 +1109,10 @@ public class SolverLevel1 {
 
     public String createWhiteFaceSideFaces(){
         String result = "";
-//        int countRedMoves = 0, countGreenMoves = 0, countOrangeMoves = 0, countBlueMoves = 0;
-
-        while (checkSideFacesWithoutCorners()){
+        int createWhiteFaceSideFacesCounter = 0;
+        while (checkSideFacesWithoutCorners() == false){
+            System.out.println("createWhiteFaceSideFaces runs " + createWhiteFaceSideFacesCounter + " times!");
+            createWhiteFaceSideFacesCounter++;
             // Red face
             if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,0) == Color.WHITE){
                 this.fullCube.left(true);
@@ -1199,8 +1203,10 @@ public class SolverLevel1 {
 
     public String createWhiteFaceBringUp(){
         String result = "";
-
-        while (checkAllUpWithoutCorners()){
+        int createWhiteFaceBringUpCounter = 0;
+        while (checkAllUpWithoutCorners() == false){
+            System.out.println("createWhiteFaceBringUp runs " + createWhiteFaceBringUpCounter + " times!");
+            createWhiteFaceBringUpCounter++;
             // Red face
             if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,0) == Color.WHITE){
                 if(this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE){
@@ -1486,7 +1492,10 @@ public class SolverLevel1 {
 
     public String createWhiteFace(){
         String result = "";
-        while (this.fullCube.getCube()[SIDES.WHITE.ordinal()].checkSameColor(Color.WHITE) == false && this.fullCube.checkRows(1) == false) {
+        int createWhiteFaceCounter = 0;
+        while (this.fullCube.getCube()[SIDES.WHITE.ordinal()].checkSameColor(Color.WHITE) == false || this.fullCube.checkRows(1) == false) {
+            System.out.println("createWhiteFace runs " + createWhiteFaceCounter + " times!");
+            createWhiteFaceCounter++;
             // up all the white corner from bottom
             // down all white corners from White face
             // up all the white corner from bottom
