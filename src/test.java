@@ -61,16 +61,16 @@ public class test {
 
         Model m = new Model(3);
         String moves = m.randomScramble(50);
-        System.out.println(moves);
+//        System.out.println(moves);
 
 //        String res = m.scrambleSolution(moves);
 //        System.out.println(res);
-        m.doMoves(moves);
-//        printCube(m.getFullCube(), colorsDictionary);
+        m.doMoves("ffbrl");
+        printCube(m.getFullCube(), colorsDictionary);
 //
-//        System.out.println();
-//        System.out.println("scramble cube!!!!!!!!");
-//        System.out.println();
+        System.out.println();
+        System.out.println("scramble cube!!!!!!!!");
+        System.out.println();
 
 //        Color[] cr = m.getFullCube().getCube()[0].getRowOrColumnColors(true, 0, false);
 //        System.out.println(colorsDictionary.get(cr[0]) + ", " + colorsDictionary.get(cr[1]) + ", " + colorsDictionary.get(cr[2]) + ", ");

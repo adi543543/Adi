@@ -105,8 +105,48 @@ public class Model {
     public String tryAl(){
         this.al1 = new SolverLevel1(this.fullCube.getCube(), this.sizeOfCube.getSizeOfCube());
         String solution = this.al1.createCross();
-        solution += this.al1.createWhiteFace();
+//        solution += this.al1.createWhiteFace();
         return solution;
+    }
+
+    public void makeMove(char singleMove){
+        switch(singleMove) {
+            case 'u':
+                this.fullCube.up(true);
+                break;
+            case 'U':
+                this.fullCube.up(false);
+                break;
+            case 'd':
+                this.fullCube.down(true);
+                break;
+            case 'D':
+                this.fullCube.down(false);
+                break;
+            case 'l':
+                this.fullCube.left(true);
+                break;
+            case 'L':
+                this.fullCube.left(false);
+                break;
+            case 'r':
+                this.fullCube.right(true);
+                break;
+            case 'R':
+                this.fullCube.right(false);
+                break;
+            case 'f':
+                this.fullCube.front(true);
+                break;
+            case 'F':
+                this.fullCube.front(false);
+                break;
+            case 'b':
+                this.fullCube.back(true);
+                break;
+            default:
+                this.fullCube.back(false);
+        }
     }
 
 }
