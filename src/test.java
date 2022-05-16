@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class test {
     private static int sizeOfCube = 3;
+    static Map<Color, String> colorsDictionary = new HashMap<Color, String>();
     public static void printFace(Face c, Map<Color, String> dictionary) {
         for (int i = 0; i < sizeOfCube; i++) {
             for (int j = 0; j < sizeOfCube; j++) {
@@ -24,7 +25,6 @@ public class test {
     }
 
     public static void main(String[] args) {
-        Map<Color, String> colorsDictionary = new HashMap<Color, String>();
         colorsDictionary.put(Color.BLUE, "BLUE  ");
         colorsDictionary.put(Color.RED, "RED   ");
         colorsDictionary.put(Color.WHITE, "WHITE ");

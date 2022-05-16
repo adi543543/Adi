@@ -228,7 +228,7 @@ public class SolverLevel1 {
 
     public String crossLevelYellowFace(){
         String res = "";
-        System.out.println("crossLevelYellowFace");
+//        System.out.println("crossLevelYellowFace");
         // if near blue
         if(this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,1) == Color.WHITE)
         {
@@ -401,6 +401,7 @@ public class SolverLevel1 {
         while (checkIndexFace(SIDES.RED.ordinal()) == false) {
             System.out.println("crossLevelRedFaces");
             if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, 1) == Color.WHITE) {
+                System.out.println("crossLevelRedFaces- 1");
                 this.fullCube.left(false);
                 res += "L";
                 if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, 0) == Color.WHITE) {
@@ -409,15 +410,18 @@ public class SolverLevel1 {
                         this.fullCube.back(true);
                         this.fullCube.down(true);
                         res += "Dbd";
-                    } else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
                         this.fullCube.down(true);
                         this.fullCube.back(true);
                         this.fullCube.down(false);
                         res += "dbD";
-                    } else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
                         this.fullCube.back(true);
                         res += "b";
-                    } else {
+                    }
+                    else {
                         this.fullCube.down(true);
                         this.fullCube.down(true);
                         this.fullCube.back(true);
@@ -425,7 +429,6 @@ public class SolverLevel1 {
                         this.fullCube.down(false);
                         res += "ddbDD";
                     }
-
                 }
                 this.fullCube.left(true);
                 res += "l";
@@ -433,20 +436,28 @@ public class SolverLevel1 {
             }
 
             if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, 0) == Color.WHITE) {
+                System.out.println("crossLevelRedFaces- 2");
                 if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.RED) {
+                    System.out.println("red + red");
                     this.fullCube.down(false);
                     this.fullCube.back(true);
                     this.fullCube.down(true);
                     res += "Dbd";
-                } else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
+                }
+                else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
+                    System.out.println("red + orange");
                     this.fullCube.down(true);
                     this.fullCube.back(true);
                     this.fullCube.down(false);
                     res += "dbD";
-                } else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
+                }
+                else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
+                    System.out.println("red + blue");
                     this.fullCube.back(true);
                     res += "b";
-                } else {
+                }
+                else {
+                    System.out.println("red + green");
                     this.fullCube.down(true);
                     this.fullCube.down(true);
                     this.fullCube.back(true);
@@ -458,51 +469,59 @@ public class SolverLevel1 {
             }
 
             if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE) {
-                if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.RED) {
+                System.out.println("crossLevelRedFaces- 3");
+                if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, 0) == Color.RED) {
                     this.fullCube.down(true);
                     this.fullCube.front(false);
                     this.fullCube.down(false);
                     res += "dFD";
-                } else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
+                }
+                else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, 0) == Color.ORANGE) {
                     this.fullCube.down(false);
                     this.fullCube.front(false);
                     this.fullCube.down(true);
                     res += "DFd";
-                } else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
+                }
+                else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, 0) == Color.BLUE) {
                     this.fullCube.down(true);
                     this.fullCube.down(true);
                     this.fullCube.front(false);
                     this.fullCube.down(false);
                     this.fullCube.down(false);
                     res += "ddFDD";
-                } else {
+                }
+                else {
                     this.fullCube.front(false);
                     res += "F";
                 }
             }
 
             if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1, 1) == Color.WHITE) {
+                System.out.println("crossLevelRedFaces- 4");
                 this.fullCube.left(false);
                 res += "L";
                 if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE) {
-                    if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.RED) {
+                    if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, 0) == Color.RED) {
                         this.fullCube.down(true);
                         this.fullCube.front(false);
                         this.fullCube.down(false);
                         res += "dFD";
-                    } else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, 0) == Color.ORANGE) {
                         this.fullCube.down(false);
                         this.fullCube.front(false);
                         this.fullCube.down(true);
                         res += "DFd";
-                    } else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, 0) == Color.BLUE) {
                         this.fullCube.down(true);
                         this.fullCube.down(true);
                         this.fullCube.front(false);
                         this.fullCube.down(false);
                         this.fullCube.down(false);
                         res += "ddFDD";
-                    } else {
+                    }
+                    else {
                         this.fullCube.front(false);
                         res += "F";
                     }
@@ -520,6 +539,7 @@ public class SolverLevel1 {
         while (checkIndexFace(SIDES.ORANGE.ordinal()) == false) {
             System.out.println("crossLevelOrangeFaces");
             if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, 1) == Color.WHITE) {
+                System.out.println("crossLevelOrangeFaces- 1");
                 this.fullCube.right(false);
                 res += "R";
                 if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, 0) == Color.WHITE) {
@@ -528,15 +548,18 @@ public class SolverLevel1 {
                         this.fullCube.front(true);
                         this.fullCube.down(true);
                         res += "Dfd";
-                    } else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.RED) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.RED) {
                         this.fullCube.down(true);
                         this.fullCube.front(true);
                         this.fullCube.down(false);
                         res += "dfD";
-                    } else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN) {
                         this.fullCube.front(true);
                         res += "f";
-                    } else {
+                    }
+                    else {
                         this.fullCube.down(true);
                         this.fullCube.down(true);
                         this.fullCube.front(true);
@@ -552,6 +575,7 @@ public class SolverLevel1 {
             }
 
             if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, 0) == Color.WHITE) {
+                System.out.println("crossLevelOrangeFaces- 2");
                 if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
                     this.fullCube.down(false);
                     this.fullCube.front(true);
@@ -577,51 +601,67 @@ public class SolverLevel1 {
             }
 
             if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE) {
-                if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
+                System.out.println("crossLevelOrangeFaces- 3");
+                if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, 0) == Color.ORANGE) {
+                    System.out.println("orange + orange");
+                    this.fullCube.down(true);
+                    this.fullCube.back(false);
+                    this.fullCube.down(false);
+                    res += "DBd";
+                }
+                else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, 0) == Color.RED) {
+                    System.out.println("orange + red");
                     this.fullCube.down(false);
                     this.fullCube.back(false);
                     this.fullCube.down(true);
                     res += "DBd";
-                } else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.RED) {
-                    this.fullCube.down(false);
-                    this.fullCube.back(false);
-                    this.fullCube.down(true);
-                    res += "DBd";
-                } else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN) {
+                }
+                else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, 0) == Color.GREEN) {
+                    System.out.println("orange + green");
                     this.fullCube.down(true);
                     this.fullCube.down(true);
                     this.fullCube.back(false);
                     this.fullCube.down(false);
                     this.fullCube.down(false);
                     res += "ddBDD";
-                } else {
+                }
+                else {
+                    System.out.println("orange + blue");
                     this.fullCube.back(false);
                     res += "B";
                 }
             }
 
             if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1, 1) == Color.WHITE) {
+                System.out.println("crossLevelOrangeFaces- 4");
                 this.fullCube.right(false);
                 res += "R";
                 if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE) {
-                    if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
+                    if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, 0) == Color.ORANGE) {
+                        System.out.println("orange + orange");
+                        this.fullCube.down(true);
+                        this.fullCube.back(false);
+                        this.fullCube.down(false);
+                        res += "DBd";
+                    }
+                    else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, 0) == Color.RED) {
+                        System.out.println("orange + red");
                         this.fullCube.down(false);
                         this.fullCube.back(false);
                         this.fullCube.down(true);
                         res += "DBd";
-                    } else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.RED) {
-                        this.fullCube.down(false);
-                        this.fullCube.back(false);
-                        this.fullCube.down(true);
-                        res += "DBd";
-                    } else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, 0) == Color.GREEN) {
+                        System.out.println("orange + green");
                         this.fullCube.down(true);
                         this.fullCube.down(true);
                         this.fullCube.back(false);
                         this.fullCube.down(false);
                         this.fullCube.down(false);
                         res += "ddBDD";
-                    } else {
+                    }
+                    else {
+                        System.out.println("orange + blue");
                         this.fullCube.back(false);
                         res += "B";
                     }
@@ -695,24 +735,27 @@ public class SolverLevel1 {
             }
 
             if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE) {
-                if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN) {
+                if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, 0) == Color.GREEN) {
                     this.fullCube.down(true);
                     this.fullCube.right(false);
                     this.fullCube.down(false);
                     res += "dRD";
-                } else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
+                }
+                else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, 0) == Color.BLUE) {
                     this.fullCube.down(false);
                     this.fullCube.right(false);
                     this.fullCube.down(true);
                     res += "DRd";
-                } else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.RED) {
+                }
+                else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, 0) == Color.RED) {
                     this.fullCube.down(true);
                     this.fullCube.down(true);
                     this.fullCube.right(false);
                     this.fullCube.down(false);
                     this.fullCube.down(false);
                     res += "ddRDD";
-                } else {
+                }
+                else {
                     this.fullCube.right(false);
                     res += "R";
                 }
@@ -722,24 +765,27 @@ public class SolverLevel1 {
                 this.fullCube.front(false);
                 res += "F";
                 if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE) {
-                    if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN) {
+                    if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, 0) == Color.GREEN) {
                         this.fullCube.down(true);
                         this.fullCube.right(false);
                         this.fullCube.down(false);
                         res += "dRD";
-                    } else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, 0) == Color.BLUE) {
                         this.fullCube.down(false);
                         this.fullCube.right(false);
                         this.fullCube.down(true);
                         res += "DRd";
-                    } else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.RED) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(1, 0) == Color.RED) {
                         this.fullCube.down(true);
                         this.fullCube.down(true);
                         this.fullCube.right(false);
                         this.fullCube.down(false);
                         this.fullCube.down(false);
                         res += "ddRDD";
-                    } else {
+                    }
+                    else {
                         this.fullCube.right(false);
                         res += "R";
                     }
@@ -813,24 +859,27 @@ public class SolverLevel1 {
             }
 
             if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE) {
-                if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
+                if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, 0) == Color.BLUE) {
                     this.fullCube.down(true);
                     this.fullCube.left(false);
                     this.fullCube.down(false);
                     res += "dLD";
-                } else if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN) {
+                }
+                else if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, 0) == Color.GREEN) {
                     this.fullCube.down(false);
                     this.fullCube.left(false);
                     this.fullCube.down(true);
                     res += "DLd";
-                } else if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
+                }
+                else if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, 0) == Color.ORANGE) {
                     this.fullCube.down(true);
                     this.fullCube.down(true);
                     this.fullCube.left(false);
                     this.fullCube.down(false);
                     this.fullCube.down(false);
                     res += "ddLDD";
-                } else {
+                }
+                else {
                     this.fullCube.left(false);
                     res += "L";
                 }
@@ -840,24 +889,27 @@ public class SolverLevel1 {
                 this.fullCube.back(false);
                 res += "B";
                 if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.WHITE) {
-                    if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.BLUE) {
+                    if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, 0) == Color.BLUE) {
                         this.fullCube.down(true);
                         this.fullCube.left(false);
                         this.fullCube.down(false);
                         res += "dLD";
-                    } else if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, 0) == Color.GREEN) {
                         this.fullCube.down(false);
                         this.fullCube.left(false);
                         this.fullCube.down(true);
                         res += "DLd";
-                    } else if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, this.sizeOfCube.getSizeOfCube() - 1) == Color.ORANGE) {
+                    }
+                    else if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(1, 0) == Color.ORANGE) {
                         this.fullCube.down(true);
                         this.fullCube.down(true);
                         this.fullCube.left(false);
                         this.fullCube.down(false);
                         this.fullCube.down(false);
                         res += "ddLDD";
-                    } else {
+                    }
+                    else {
                         this.fullCube.left(false);
                         res += "L";
                     }
