@@ -9,10 +9,13 @@ public class Face {
     private Color[][] faceColors;
     private CubeSize sizeOfCube;
 
-    public Face(Color[][] faceColors, int sizeOfCube) {
+    public Face(Face faceColors, int sizeOfCube) {
         //A constructor that Build a standard cube (3 on 3).
-        this.faceColors = faceColors;
+        this.faceColors = new Color[sizeOfCube][sizeOfCube];
         this.sizeOfCube = new CubeSize(sizeOfCube);
+        for (int i = 0; i < sizeOfCube; i++){
+            this.faceColors[i] = faceColors.getRowOrColumnColors(true, i, false).clone();
+        }
     }
 
     public Face(Color c, int sizeOfCube) {
@@ -55,6 +58,10 @@ public class Face {
             }
         }
         return temp;
+    }
+
+    public Color getCubie(int row, int column){
+        return this.faceColors[row][column];
     }
 
     public void setSizeOfCube(int sizeOfCube) {
@@ -204,6 +211,27 @@ public class Face {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public boolean checkSameColor(Color c){
+        for (int i = 0; i < this.sizeOfCube.getSizeOfCube(); i++){
+            for (int j = 0; j < this.sizeOfCube.getSizeOfCube(); j++){
+                if (this.faceColors[i][j] != c){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public boolean checkSameColorInRow(Color c, int row){
+        for (int i = 0; i < this.sizeOfCube.getSizeOfCube(); i++){
+            if (this.faceColors[row][i] != c){
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }

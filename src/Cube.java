@@ -18,7 +18,10 @@ public class Cube {
 
     public Cube(Face[] cube, int sizeOfCube) {
         this.sizeOfCube = new CubeSize(sizeOfCube);
-        this.cube = cube;
+        this.cube = new Face[6];
+        for (int i = 0; i < 6; i++){
+            this.cube[i] = new Face(cube[i], sizeOfCube);
+        }
     }
 
     public Cube(int sizeOfCube) {
@@ -264,5 +267,27 @@ public class Cube {
                 }
             }
         }
+    }
+
+    public Cube getCopyOfCube(){
+        return new Cube(this.cube, this.sizeOfCube.getSizeOfCube());
+    }
+
+    public boolean checkRows(int numOfRows){
+        for (int i = this.sizeOfCube.getSizeOfCube() - 1; i > this.sizeOfCube.getSizeOfCube() - 1 - numOfRows; i--) {
+            if (this.cube[SIDES.GREEN.ordinal()].checkSameColorInRow(Color.GREEN, i) == false) {
+                return false;
+            }
+            if (this.cube[SIDES.RED.ordinal()].checkSameColorInRow(Color.RED, i) == false) {
+                return false;
+            }
+            if (this.cube[SIDES.BLUE.ordinal()].checkSameColorInRow(Color.BLUE, i) == false) {
+                return false;
+            }
+            if (this.cube[SIDES.ORANGE.ordinal()].checkSameColorInRow(Color.ORANGE, i) == false) {
+                return false;
+            }
+        }
+        return true;
     }
 }

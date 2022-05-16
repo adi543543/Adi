@@ -60,9 +60,28 @@ public class test {
 //        printCube(c, colorsDictionary);
 
         Model m = new Model(3);
-        String moves = m.randomScramble(4);
+        String moves = m.randomScramble(50);
         System.out.println(moves);
+
+//        String res = m.scrambleSolution(moves);
+//        System.out.println(res);
         m.doMoves(moves);
+//        printCube(m.getFullCube(), colorsDictionary);
+//
+//        System.out.println();
+//        System.out.println("scramble cube!!!!!!!!");
+//        System.out.println();
+
+//        Color[] cr = m.getFullCube().getCube()[0].getRowOrColumnColors(true, 0, false);
+//        System.out.println(colorsDictionary.get(cr[0]) + ", " + colorsDictionary.get(cr[1]) + ", " + colorsDictionary.get(cr[2]) + ", ");
+
+//        printCube(m.getFullCube().getCube()[0], colorsDictionary);
+        String res = m.tryAl();
+        System.out.println("solution- " + res);
+        System.out.println("Num of moves- " + res.length());
+        System.out.println();
+        System.out.println();
+        m.doMoves(res);
         printCube(m.getFullCube(), colorsDictionary);
 
 //        Color[][] faceColors = {{Color.YELLOW, Color.RED, Color.WHITE}, {Color.BLUE, Color.WHITE, Color.BLUE}, {Color.YELLOW, Color.RED, Color.WHITE}};
