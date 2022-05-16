@@ -308,6 +308,7 @@ public class SolverLevel2 {
         return true;
     }
 
+    // not in use!
     public String createSecondRowSecondRows(){
         String result = "";
         int createSecondRowSecondRowsC = 0;
@@ -365,13 +366,14 @@ public class SolverLevel2 {
             }
 
             // Fix second row
-            if (this.fullCube.checkRows(2) == false){
+            if (this.fullCube.checkRows(2) == false && checkSecondRows() == false){
                 result += fixSecondRows();
             }
         }
         return result;
     }
 
+    // not in use!
     public boolean checkSecondRows(){
         boolean redGreenFlag = this.fullCube.getCube()[SolverLevel1.SIDES.RED.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) == Color.RED && this.fullCube.getCube()[SolverLevel1.SIDES.GREEN.ordinal()].getCubie(1,0) == Color.GREEN;
         boolean greenOrangeFlag = this.fullCube.getCube()[SolverLevel1.SIDES.GREEN.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) == Color.GREEN && this.fullCube.getCube()[SolverLevel1.SIDES.ORANGE.ordinal()].getCubie(1,0) == Color.ORANGE;
@@ -382,7 +384,6 @@ public class SolverLevel2 {
 
     public String fixSecondRows(){
         String result = "";
-
         // red - green
         if (this.fullCube.getCube()[SolverLevel1.SIDES.RED.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) != Color.RED || this.fullCube.getCube()[SolverLevel1.SIDES.GREEN.ordinal()].getCubie(1,0) != Color.GREEN){
             this.fullCube.left(false);
@@ -432,19 +433,73 @@ public class SolverLevel2 {
 
     public String createSecondRow(){
         String result = "";
-        int createSecondRowC = 0;
-        while (this.fullCube.checkRows(2) == false){
-            System.out.println("createSecondRow runs- " + createSecondRowC + " times!");
-            createSecondRowC++;
+        int createSecondRowSecondRowsC = 0;
+        while (this.fullCube.checkRows(2) == false)
+        {
+            System.out.println("createSecondRowSecondRows runs- " + createSecondRowSecondRowsC + " times!");
+            createSecondRowSecondRowsC++;
+            // red - green
+            if (this.fullCube.getCube()[SolverLevel1.SIDES.RED.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW || this.fullCube.getCube()[SolverLevel1.SIDES.GREEN.ordinal()].getCubie(1,0) == Color.YELLOW){
+                System.out.println("1- 1");
+                this.fullCube.left(false);
+                this.fullCube.up(true);
+                this.fullCube.left(true);
+                this.fullCube.up(true);
+                this.fullCube.front(true);
+                this.fullCube.up(false);
+                this.fullCube.front(false);
+                result += "LulufUF";
+            }
+            // green - orange
+            if (this.fullCube.getCube()[SolverLevel1.SIDES.GREEN.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW || this.fullCube.getCube()[SolverLevel1.SIDES.ORANGE.ordinal()].getCubie(1,0) == Color.YELLOW){
+                System.out.println("2 - 1");
+                this.fullCube.front(false);
+                this.fullCube.up(true);
+                this.fullCube.front(true);
+                this.fullCube.up(true);
+                this.fullCube.right(true);
+                this.fullCube.up(false);
+                this.fullCube.right(false);
+                result += "FufurUR";
+            }
+            // orange - blue
+            if (this.fullCube.getCube()[SolverLevel1.SIDES.ORANGE.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW || this.fullCube.getCube()[SolverLevel1.SIDES.BLUE.ordinal()].getCubie(1,0) == Color.YELLOW){
+                System.out.println("3 - 1");
+                this.fullCube.right(false);
+                this.fullCube.up(true);
+                this.fullCube.right(true);
+                this.fullCube.up(true);
+                this.fullCube.back(true);
+                this.fullCube.up(false);
+                this.fullCube.back(false);
+                result += "RurubUB";
+            }
+            // blue - red
+            if (this.fullCube.getCube()[SolverLevel1.SIDES.BLUE.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW || this.fullCube.getCube()[SolverLevel1.SIDES.RED.ordinal()].getCubie(1,0) == Color.YELLOW){
+                System.out.println("4 - 1");
+                this.fullCube.back(false);
+                this.fullCube.up(true);
+                this.fullCube.back(true);
+                this.fullCube.up(true);
+                this.fullCube.left(true);
+                this.fullCube.up(false);
+                this.fullCube.left(false);
+                result += "BubulUL";
+            }
 
             // Yellow face
             if (this.fullCube.checkRows(2) == false){
                 result += createSecondRowYellowFace();
             }
 
-            // Second row
+            // Fix second row
             if (this.fullCube.checkRows(2) == false){
-                result += createSecondRowSecondRows();
+                result += fixSecondRows();
+            }
+
+            // Yellow face
+            if (this.fullCube.checkRows(2) == false){
+                result += createSecondRowYellowFace();
             }
         }
         return result;

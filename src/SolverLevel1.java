@@ -95,6 +95,7 @@ public class SolverLevel1 {
         String res = "";
         while (checkWhiteFace() == false){
             // if near blue
+            System.out.println("crossLevelWhiteFace");
             if(this.fullCube.getCube()[SIDES.WHITE.ordinal()].getCubie(0,1) == Color.WHITE)
             {
                 if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) != Color.BLUE){
@@ -227,7 +228,7 @@ public class SolverLevel1 {
 
     public String crossLevelYellowFace(){
         String res = "";
-
+        System.out.println("crossLevelYellowFace");
         // if near blue
         if(this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,1) == Color.WHITE)
         {
@@ -398,6 +399,7 @@ public class SolverLevel1 {
         String res = "";
 
         while (checkIndexFace(SIDES.RED.ordinal()) == false) {
+            System.out.println("crossLevelRedFaces");
             if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, 1) == Color.WHITE) {
                 this.fullCube.left(false);
                 res += "L";
@@ -516,6 +518,7 @@ public class SolverLevel1 {
         String res = "";
 
         while (checkIndexFace(SIDES.ORANGE.ordinal()) == false) {
+            System.out.println("crossLevelOrangeFaces");
             if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, 1) == Color.WHITE) {
                 this.fullCube.right(false);
                 res += "R";
@@ -633,6 +636,7 @@ public class SolverLevel1 {
         String res = "";
 
         while (checkIndexFace(SIDES.GREEN.ordinal()) == false) {
+            System.out.println("crossLevelGreenFaces");
             if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, 1) == Color.WHITE) {
                 this.fullCube.front(false);
                 res += "F";
@@ -750,6 +754,7 @@ public class SolverLevel1 {
         String res = "";
 
         while (checkIndexFace(SIDES.BLUE.ordinal()) == false) {
+            System.out.println("crossLevelBlueFaces");
             if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, 1) == Color.WHITE) {
                 this.fullCube.back(false);
                 res += "B";
@@ -866,6 +871,7 @@ public class SolverLevel1 {
     public String createCross(){
         String result = "";
         while (isCross() == false) {
+            System.out.println("createCross");
             if (isCross() == false) { // check white
                 result += crossLevelWhiteFace();
             }
