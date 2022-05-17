@@ -7,6 +7,7 @@ public class Model {
     private SolverLevel1 al1;
     private SolverLevel2 al2;
     private SolverLevel3 al3;
+    private SolverLevel4 al4;
 
     public Model(Cube fullCube, int sizeOfCube) {
         this.fullCube = fullCube;
@@ -14,6 +15,7 @@ public class Model {
         this.al1 = new SolverLevel1(this.fullCube.getCube(), sizeOfCube);
         this.al2 = new SolverLevel2(this.fullCube.getCube(), sizeOfCube);
         this.al3 = new SolverLevel3(this.fullCube.getCube(), sizeOfCube);
+        this.al4 = new SolverLevel4(this.fullCube.getCube(), sizeOfCube);
     }
 
     public Model(int sizeOfCube) {
@@ -29,6 +31,9 @@ public class Model {
     }
     public SolverLevel3 getAl3() {
         return this.al3;
+    }
+    public SolverLevel4 getAl4() {
+        return this.al4;
     }
 
     public String randomScramble(int numOfMoves){
@@ -162,13 +167,24 @@ public class Model {
         if (solver.length() != 0){
             solution += solver;
         }
+
         doMoves(solution);
         System.out.println();
         System.out.println("compareCubes createYellowFace-" + compareCubes(this.al3.getFullCube(), this.fullCube));
         System.out.println();
 
+        this.al4 = new SolverLevel4(this.al3.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
+        solver = this.al4.solveThirdLayer();
+        if (solver.length() != 0){
+            solution += solver;
+        }
+
+        doMoves(solution);
+        System.out.println();
+        System.out.println("compareCubes createYellowCross-" + compareCubes(this.al4.getFullCube(), this.fullCube));
+        System.out.println();
+
         System.out.println("____________________End algorithm in Model____________________");
-        test.printCube(this.fullCube, test.colorsDictionary);
         return solution;
     }
 

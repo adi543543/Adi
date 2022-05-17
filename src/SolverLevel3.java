@@ -106,7 +106,7 @@ public class SolverLevel3 {
             System.out.println("hiiiiiii");
         }
         System.out.println("____________________End algorithm____________________");
-
+        test.printCube(this.fullCube, test.colorsDictionary);
         return result;
     }
 
@@ -188,22 +188,6 @@ public class SolverLevel3 {
     public String moveToStates(){
         String result = "";
         while (isInState() == false){
-            System.out.println("moveToStates");
-
-            if (isFirstState()){
-                System.out.println("isFirstState");
-
-            }
-            if (isSecondState()){
-                System.out.println("isSecondState");
-            }
-            if (isThirdState()){
-                System.out.println("isThirdState");
-            }
-            if (isFourthState()){
-                System.out.println("isFourthState");
-            }
-
             this.fullCube.up(true);
             result += "u";
         }
@@ -213,7 +197,6 @@ public class SolverLevel3 {
                 result += "u";
             }
         }
-        System.out.println("_________________________moveToStates end ______________________");
 
         return result;
     }

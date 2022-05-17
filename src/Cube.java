@@ -292,4 +292,26 @@ public class Cube {
         return true;
     }
 
+    public boolean isSolved(){
+        if (this.cube[SIDES.YELLOW.ordinal()].checkSameColor(Color.YELLOW) == false){
+            return false;
+        }
+        if (this.cube[SIDES.WHITE.ordinal()].checkSameColor(Color.WHITE) == false){
+            return false;
+        }
+        if (this.cube[SIDES.RED.ordinal()].checkSameColor(Color.RED) == false){
+            return false;
+        }
+        if (this.cube[SIDES.BLUE.ordinal()].checkSameColor(Color.BLUE) == false){
+            return false;
+        }
+        if (this.cube[SIDES.ORANGE.ordinal()].checkSameColor(Color.ORANGE) == false){
+            return false;
+        }
+        if (this.cube[SIDES.GREEN.ordinal()].checkSameColor(Color.GREEN) == false){
+            return false;
+        }
+        return true;
+    }
+
 }
