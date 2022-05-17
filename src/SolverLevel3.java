@@ -48,16 +48,16 @@ public class SolverLevel3 {
     }
 
     public boolean checkYellowCross(){
-        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(0,1) != Color.YELLOW){
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,1) != Color.YELLOW){
             return false;
         }
-        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,0) != Color.YELLOW){
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(1,0) != Color.YELLOW){
             return false;
         }
-        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) != Color.YELLOW){
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) != Color.YELLOW){
             return false;
         }
-        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) != Color.YELLOW){
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) != Color.YELLOW){
             return false;
         }
         return true;
@@ -65,16 +65,16 @@ public class SolverLevel3 {
 
     public String moveToTriangular(){
         String result = "";
-        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(0,1) == Color.YELLOW && this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,0) == Color.YELLOW){
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,1) == Color.YELLOW && this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(1,0) == Color.YELLOW){
             this.fullCube.up(true);
             result += "u";
         }
-        else if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,0) == Color.YELLOW && this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) == Color.YELLOW){
+        else if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(1,0) == Color.YELLOW && this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) == Color.YELLOW){
             this.fullCube.up(true);
             this.fullCube.up(true);
             result += "uu";
         }
-        else if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW && this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) == Color.YELLOW){
+        else if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW && this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) == Color.YELLOW){
             this.fullCube.up(false);
             result += "U";
         }
@@ -82,15 +82,139 @@ public class SolverLevel3 {
     }
 
     public String createYellowFace(){
+        System.out.println();
+        System.out.println();
+        System.out.println("hellooooooooooo");
+
         String result = "";
-        while (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].checkSameColor(Color.YELLOW)){
+        while (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].checkSameColor(Color.YELLOW) == false){
+
+            String solver = moveToStates();
+            if (solver.length() != 0){
+                result += solver;
+            }
+            this.fullCube.front(true);
+            this.fullCube.up(true);
+            this.fullCube.front(false);
+            this.fullCube.up(true);
+            this.fullCube.front(true);
+            this.fullCube.up(true);
+            this.fullCube.up(true);
+            this.fullCube.front(false);
+            result += "fuFufuuF";
+
             System.out.println("hiiiiiii");
         }
+        System.out.println("____________________End algorithm____________________");
+
         return result;
     }
 
-    public String moveToFourStates(){
+    public boolean isFirstState(){
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,0) == Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,0) == Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isSecondState(){
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,0) == Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) != Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,0) == Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,this.sizeOfCube.getSizeOfCube() - 1) != Color.YELLOW){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isThirdState(){
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,0) != Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,0) == Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isFourthState(){
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,0) == Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) != Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,0) != Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean isInState(){
+        if (isFirstState()){
+            System.out.println("isFirstState");
+
+        }
+        if (isFirstState() == true || isSecondState() == true || isThirdState() == true || isFourthState() == true ){
+            return true;
+        }
+        return false;
+    }
+
+    public String moveToStates(){
         String result = "";
+        while (isInState() == false){
+            System.out.println("moveToStates");
+
+            if (isFirstState()){
+                System.out.println("isFirstState");
+
+            }
+            if (isSecondState()){
+                System.out.println("isSecondState");
+            }
+            if (isThirdState()){
+                System.out.println("isThirdState");
+            }
+            if (isFourthState()){
+                System.out.println("isFourthState");
+            }
+
+            this.fullCube.up(true);
+            result += "u";
+        }
+        if (isFirstState()){
+            while (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW){
+                this.fullCube.up(true);
+                result += "u";
+            }
+        }
+        System.out.println("_________________________moveToStates end ______________________");
+
         return result;
     }
 }

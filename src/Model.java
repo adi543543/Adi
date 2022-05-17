@@ -115,12 +115,60 @@ public class Model {
     public String tryAl(){
         this.al1 = new SolverLevel1(this.fullCube.getCube(), this.sizeOfCube.getSizeOfCube());
         String solution = this.al1.createCross();
-        solution += this.al1.createWhiteFace();
-        this.al2 = new SolverLevel2(this.al1.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
-        solution += this.al2.createSecondRow();
-        this.al3 = new SolverLevel3(this.al2.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
-        solution += this.al3.createYellowCross();
+        String solver = this.al1.createCross();
+        if (solver.length() != 0){
+            solution += solver;
+        }
 
+        doMoves(solution);
+        System.out.println();
+        System.out.println("compareCubes createCross-" + compareCubes(this.al1.getFullCube(), this.fullCube));
+        System.out.println();
+
+        solver = this.al1.createWhiteFace();
+        if (solver.length() != 0){
+            solution += solver;
+        }
+
+        doMoves(solution);
+        System.out.println();
+        System.out.println("compareCubes createWhiteFace-" + compareCubes(this.al1.getFullCube(), this.fullCube));
+        System.out.println();
+
+        this.al2 = new SolverLevel2(this.al1.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
+        solver = this.al2.createSecondRow();
+        if (solver.length() != 0){
+            solution += solver;
+        }
+
+
+        doMoves(solution);
+        System.out.println();
+        System.out.println("compareCubes createSecondRow-" + compareCubes(this.al2.getFullCube(), this.fullCube));
+        System.out.println();
+
+        this.al3 = new SolverLevel3(this.al2.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
+        solver = this.al3.createYellowCross();
+        if (solver.length() != 0){
+            solution += solver;
+        }
+
+        doMoves(solution);
+        System.out.println();
+        System.out.println("compareCubes createYellowCross-" + compareCubes(this.al3.getFullCube(), this.fullCube));
+        System.out.println();
+
+        solver = this.al3.createYellowFace();
+        if (solver.length() != 0){
+            solution += solver;
+        }
+        doMoves(solution);
+        System.out.println();
+        System.out.println("compareCubes createYellowFace-" + compareCubes(this.al3.getFullCube(), this.fullCube));
+        System.out.println();
+
+        System.out.println("____________________End algorithm in Model____________________");
+        test.printCube(this.fullCube, test.colorsDictionary);
         return solution;
     }
 
@@ -162,6 +210,19 @@ public class Model {
             default:
                 this.fullCube.back(false);
         }
+    }
+
+    public boolean compareCubes(Cube modelCube, Cube solverCube){
+        for (int f = 0; f < 6; f++) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (modelCube.getCube()[f].getCubie(i, j) != solverCube.getCube()[f].getCubie(i, j)){
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
 }

@@ -78,7 +78,7 @@ public class test {
 //        String res = m.scrambleSolution(moves);
 //        System.out.println(res);
         m.doMoves(moves);
-        printCube(m.getFullCube(), colorsDictionary);
+//        printCube(m.getFullCube(), colorsDictionary);
 ////
 //        System.out.println();
 //        System.out.println("scramble cube!!!!!!!!");
@@ -88,6 +88,8 @@ public class test {
 //        System.out.println(colorsDictionary.get(cr[0]) + ", " + colorsDictionary.get(cr[1]) + ", " + colorsDictionary.get(cr[2]) + ", ");
 
 //        printCube(m.getFullCube().getCube()[0], colorsDictionary);
+
+
         String res = m.tryAl();
         System.out.println("solution- " + res);
         System.out.println("Num of moves- " + res.length());

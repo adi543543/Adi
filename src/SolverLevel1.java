@@ -30,6 +30,7 @@ public class SolverLevel1 {
         this.sizeOfCube.setSizeOfCube(sizeOfCube);
     }
 
+    // create cross on White face
     private boolean isCross(){
         int count = 0;
         if(this.fullCube.getCube()[SIDES.WHITE.ordinal()].getCubie(0,1) == Color.WHITE && this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) == Color.BLUE)
@@ -958,6 +959,8 @@ public class SolverLevel1 {
         return result;
     }
 
+
+    // create White face
     public String createWhiteFaceWhiteFace(){
         String result = "";
         int createWhiteFaceWhiteFaceCounter = 0;
