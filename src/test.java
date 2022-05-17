@@ -78,7 +78,7 @@ public class test {
 //        String res = m.scrambleSolution(moves);
 //        System.out.println(res);
         m.doMoves(moves);
-//        printCube(m.getFullCube(), colorsDictionary);
+        printCube(m.getFullCube(), colorsDictionary);
 ////
 //        System.out.println();
 //        System.out.println("scramble cube!!!!!!!!");

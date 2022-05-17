@@ -230,7 +230,14 @@ public class Face {
                 return false;
             }
         }
-
+        return true;
+    }
+    public boolean checkSameColorInColumn(Color c, int column){
+        for (int i = 0; i < this.sizeOfCube.getSizeOfCube(); i++){
+            if (this.faceColors[i][column] != c){
+                return false;
+            }
+        }
         return true;
     }
 

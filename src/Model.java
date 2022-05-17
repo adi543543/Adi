@@ -118,8 +118,9 @@ public class Model {
         solution += this.al1.createWhiteFace();
         this.al2 = new SolverLevel2(this.al1.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
         solution += this.al2.createSecondRow();
-//        this.al3 = new SolverLevel3(this.al2.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
-//        solution += this.al3.createYellowCross();
+        this.al3 = new SolverLevel3(this.al2.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
+        solution += this.al3.createYellowCross();
+
         return solution;
     }
 

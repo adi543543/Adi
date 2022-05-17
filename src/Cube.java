@@ -269,6 +269,7 @@ public class Cube {
         }
     }
 
+    // not used?
     public Cube getCopyOfCube(){
         return new Cube(this.cube, this.sizeOfCube.getSizeOfCube());
     }

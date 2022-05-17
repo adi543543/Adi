@@ -31,11 +31,66 @@ public class SolverLevel3 {
 
     public String createYellowCross(){
         String result = "";
+        while (checkYellowCross() == false){
+            String solver = moveToTriangular();
+            if (solver.length() != 0){
+                result += solver;
+            }
+            this.fullCube.left(true);
+            this.fullCube.up(true);
+            this.fullCube.front(true);
+            this.fullCube.up(false);
+            this.fullCube.front(false);
+            this.fullCube.left(false);
+            result += "lufUFL";
+        }
         return result;
     }
 
     public boolean checkYellowCross(){
-//        if(this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(0,1) != Color.YELLOW)
+        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(0,1) != Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,0) != Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) != Color.YELLOW){
+            return false;
+        }
+        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) != Color.YELLOW){
+            return false;
+        }
         return true;
+    }
+
+    public String moveToTriangular(){
+        String result = "";
+        if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(0,1) == Color.YELLOW && this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,0) == Color.YELLOW){
+            this.fullCube.up(true);
+            result += "u";
+        }
+        else if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,0) == Color.YELLOW && this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) == Color.YELLOW){
+            this.fullCube.up(true);
+            this.fullCube.up(true);
+            result += "uu";
+        }
+        else if (this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(1,this.sizeOfCube.getSizeOfCube() - 1) == Color.YELLOW && this.fullCube.getCube()[SolverLevel1.SIDES.YELLOW.ordinal()].getCubie(this.sizeOfCube.getSizeOfCube() - 1,1) == Color.YELLOW){
+            this.fullCube.up(false);
+            result += "U";
+        }
+        return result;
+    }
+
+    public String createYellowFace(){
+        String result = "";
+        while (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].checkSameColor(Color.YELLOW)){
+            System.out.println("hiiiiiii");
+        }
+        return result;
+    }
+
+    public String moveToFourStates(){
+        String result = "";
+        return result;
     }
 }
