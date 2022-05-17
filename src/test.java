@@ -77,6 +77,7 @@ public class test {
 
 //        String res = m.scrambleSolution(moves);
 //        System.out.println(res);
+        String[] possibleScrample = {"fublrfubffUBFlr","UlfRbbUddBlrfBB","UBLFbudrlUlFFdbuff", "UbdlrLUbdRffuuBBdlruu", "UbdlrLUbublrdu", "ublrdrlbULbrdrdUffbrf"};
         m.doMoves(moves);
 //        printCube(m.getFullCube(), colorsDictionary);
 ////

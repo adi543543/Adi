@@ -33,6 +33,7 @@ public class SolverLevel4 {
 
     public String firstAlgorithm(String faces){
         String result = "";
+        System.out.println(faces);
         switch (faces){
             case "gr":
                 this.fullCube.front(false);
@@ -175,33 +176,35 @@ public class SolverLevel4 {
             test.printCube(this.fullCube, test.colorsDictionary);
             Color completeRow = isAndWhichCompleteRow();
             if(completeRow != Color.BLACK) {
+                System.out.println("full row!!!!!!!!!!!!!");
                 result += moveToSecondAlgorithm();
                 if (isSecondAlgorithm()) {
                     if (completeRow == Color.ORANGE) {
-                        result += firstAlgorithm("gr");
+                        result += secondAlgorithm("o");
                     }
                     else if (completeRow == Color.GREEN) {
-                        result += firstAlgorithm("rb");
+                        result += secondAlgorithm("g");
                     }
                     else if (completeRow == Color.RED) {
-                        result += firstAlgorithm("bo");
+                        result += secondAlgorithm("r");
                     }
                     else { // BLUE
-                        result += firstAlgorithm("og");
+                        result += secondAlgorithm("b");
                     }
                 }
-                else{ // FIX
+                else{
+                    System.out.println("only row!!");
                     if (completeRow == Color.ORANGE) {
-                        result += secondAlgorithm("o"); // FIRST ALGORITHM
+                        result += firstAlgorithm("gr"); // FIRST ALGORITHM
                     }
                     else if (completeRow == Color.GREEN) {
-                        result += secondAlgorithm("g"); // FIRST ALGORITHM
+                        result += firstAlgorithm("rb"); // FIRST ALGORITHM
                     }
                     else if (completeRow == Color.RED) {
-                        result += secondAlgorithm("r"); // FIRST ALGORITHM
+                        result += firstAlgorithm("bo"); // FIRST ALGORITHM
                     }
                     else { // BLUE
-                        result += secondAlgorithm("b"); // FIRST ALGORITHM
+                        result += firstAlgorithm("og"); // FIRST ALGORITHM
                     }
                 }
             }
@@ -216,33 +219,27 @@ public class SolverLevel4 {
     }
 
     public Color isAndWhichCompleteRow(){
-        if (this.fullCube.getCube()[SIDES.RED.ordinal()].checkSameColorInRow(Color.RED, 0)){
-            return Color.RED;
-        }
-        if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].checkSameColorInRow(Color.BLUE, 0)){
-            return Color.BLUE;
-        }
-        if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].checkSameColorInRow(Color.ORANGE, 0)){
-            return Color.ORANGE;
-        }
-        if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].checkSameColorInRow(Color.GREEN, 0)){
-            return Color.GREEN;
+        for (int i = 1; i < 5; i++){
+            Color c = this.fullCube.getCube()[i].checkSameLastRow();
+            if (c != Color.BLACK){
+                return c;
+            }
         }
         return Color.BLACK;
     }
 
     public Color isAndWhichZebraRow(){
-        if (this.fullCube.getCube()[SIDES.RED.ordinal()].checkSameColorInRow(Color.RED, 0)){
-            return Color.RED;
+        if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, 0) == this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1)){
+            return this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, 0);
         }
-        if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].checkSameColorInRow(Color.BLUE, 0)){
-            return Color.BLUE;
+        else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, 0) == this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1)){
+            return this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, 0);
         }
-        if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].checkSameColorInRow(Color.ORANGE, 0)){
-            return Color.ORANGE;
+        else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, 0) == this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1)){
+            return this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, 0);
         }
-        if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].checkSameColorInRow(Color.GREEN, 0)){
-            return Color.GREEN;
+        else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, 0) == this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1)){
+            return this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, 0);
         }
         return Color.BLACK;
     }
@@ -280,23 +277,46 @@ public class SolverLevel4 {
         return false;
     }
 
-    public String moveToSecondAlgorithm(){
-        Color c = isAndWhichCompleteRow();
-        int faceIndex;
-        String result = "";
-
-        if (c != Color.BLACK){
-            faceIndex = getFullFaceSide();
-            while (this.fullCube.getCube()[faceIndex].checkSameColor(c) == false){
-                this.fullCube.up(true);
-                result += "u";
-            }
+    public boolean isFaceSameColor(){
+        if(this.fullCube.getCube()[SIDES.RED.ordinal()].checkSameColor(Color.RED)){
+            return true;
         }
+        else if(this.fullCube.getCube()[SIDES.BLUE.ordinal()].checkSameColor(Color.BLUE)){
+            return true;
+        }
+        else if(this.fullCube.getCube()[SIDES.ORANGE.ordinal()].checkSameColor(Color.ORANGE)){
+            return true;
+        }
+        else if(this.fullCube.getCube()[SIDES.GREEN.ordinal()].checkSameColor(Color.GREEN)){
+            return true;
+        }
+        return false;
+    }
+
+    public String moveToSecondAlgorithm(){
+        String result = "";
+        int i = 0;
+
+        while (isFaceSameColor() == false){
+            this.fullCube.up(true);
+            result += "u";
+            i++;
+            if (i > 4){
+                System.out.println("bag in full face______________");
+                break;
+            }
+
+        }
+        System.out.println("full cube face______________");
+        test.printCube(this.fullCube, test.colorsDictionary);
 
         return result;
     }
 
     public boolean isFirstAlgorithm(){
+        if(isAndWhichZebraRow() != Color.black){
+            return true;
+        }
         if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,0) == Color.RED){
             return true;
         }
@@ -312,13 +332,82 @@ public class SolverLevel4 {
         return false;
     }
 
+    public String moveToZebra(Color zebraColor){
+        String result = "";
+        if (zebraColor == Color.RED){
+            while (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,0) != Color.RED || this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) != Color.RED){
+                this.fullCube.up(true);
+                result += "u";
+            }
+        }
+        else if (zebraColor == Color.BLUE){
+            while (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0,0) != Color.BLUE || this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) != Color.BLUE){
+                this.fullCube.up(true);
+                result += "u";
+            }
+        }
+        else if (zebraColor == Color.ORANGE){
+            while (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0,0) != Color.ORANGE || this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) != Color.ORANGE){
+                this.fullCube.up(true);
+                result += "u";
+            }
+        }
+        else { //GREEN
+            while (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0,0) != Color.GREEN || this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1) != Color.GREEN){
+                this.fullCube.up(true);
+                result += "u";
+            }
+        }
+        return result;
+    }
+
+    public String solveZebraState(Color zebraColor){
+        String result = "";
+        result += moveToZebra(zebraColor);
+        if (zebraColor == Color.RED){
+            while(this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, 0) != Color.RED && this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.RED){
+                this.fullCube.up(true);
+                result += "u";
+            }
+            System.out.println("zebraaaaaaaaaa");
+            test.printCube(this.fullCube, test.colorsDictionary);
+            result += firstAlgorithm("bo");
+        }
+        else if (zebraColor == Color.BLUE){
+            while(this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, 0) != Color.BLUE && this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.BLUE){
+                this.fullCube.up(true);
+                result += "u";
+            }
+            result += firstAlgorithm("og");
+        }
+        else if (zebraColor == Color.ORANGE){
+            while(this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, 0) != Color.ORANGE && this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.ORANGE){
+                this.fullCube.up(true);
+                result += "u";
+            }
+            result += firstAlgorithm("gr");
+        }
+        else { // GREEN
+            while(this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, 0) != Color.GREEN && this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.GREEN){
+                this.fullCube.up(true);
+                result += "u";
+            }
+            result += firstAlgorithm("rb");
+        }
+        return result;
+    }
+
     public String doFirstAlgorithm(){
         String result = "";
         while (isFirstAlgorithm() == false){
             this.fullCube.up(true);
             result += "u";
         }
-        if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,0) == Color.RED){
+        Color isZebra = isAndWhichZebraRow();
+        if (isZebra != Color.BLACK){
+            result += solveZebraState(isZebra);
+        }
+        else if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,0) == Color.RED){
             result += firstAlgorithm("bo");
         }
         else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0,0) == Color.BLUE){

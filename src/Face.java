@@ -241,4 +241,12 @@ public class Face {
         return true;
     }
 
+    public Color checkSameLastRow(){
+        if (this.faceColors[0][0] == this.faceColors[0][1] && this.faceColors[0][0] == this.faceColors[0][2] && this.faceColors[0][1] == this.faceColors[0][2])
+        {
+            return this.faceColors[0][0];
+        }
+        return Color.BLACK;
+    }
+
 }

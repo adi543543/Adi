@@ -608,7 +608,7 @@ public class SolverLevel1 {
                     this.fullCube.down(true);
                     this.fullCube.back(false);
                     this.fullCube.down(false);
-                    res += "DBd";
+                    res += "dBD";
                 }
                 else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, 0) == Color.RED) {
                     System.out.println("orange + red");
@@ -643,7 +643,7 @@ public class SolverLevel1 {
                         this.fullCube.down(true);
                         this.fullCube.back(false);
                         this.fullCube.down(false);
-                        res += "DBd";
+                        res += "dBD";
                     }
                     else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(1, 0) == Color.RED) {
                         System.out.println("orange + red");
