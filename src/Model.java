@@ -36,25 +36,32 @@ public class Model {
         return this.al4;
     }
 
-    public String randomScramble(int numOfMoves){
-        if (numOfMoves == 0){
-            return "";
-        }
+//    public String randomScramble(int numOfMoves){
+//        if (numOfMoves == 0){
+//            return "";
+//        }
+//
+//        Random rand = new Random();
+//        String movesString = "";
+//        int randNum1, randNum2;
+//
+//        randNum1 = rand.nextInt(12);
+//        movesString += moves[randNum1];
+//        while (movesString.length() != numOfMoves){
+//            randNum2 = rand.nextInt(12);
+//            if (randNum1 != randNum2){
+//                movesString += moves[randNum2];
+//            }
+//            randNum1 = randNum2;
+//        }
+//        return movesString;
+//    }
 
+    public String randomScramble(String[] str){
         Random rand = new Random();
-        String movesString = "";
-        int randNum1, randNum2;
+        int randNum1 = rand.nextInt(str.length);
 
-        randNum1 = rand.nextInt(12);
-        movesString += moves[randNum1];
-        while (movesString.length() != numOfMoves){
-            randNum2 = rand.nextInt(12);
-            if (randNum1 != randNum2){
-                movesString += moves[randNum2];
-            }
-            randNum1 = randNum2;
-        }
-        return movesString;
+        return str[randNum1];
     }
 
     public String scrambleSolution(String randomScramble){

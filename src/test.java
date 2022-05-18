@@ -73,16 +73,18 @@ public class test {
 
         Model m = new Model(3);
 
+        String[] possibleScrample = {"fublrfubffUBFlr","UlfRbbUddBlrfBB","UBLFbudrlUlFFdbuff", "UbdlrLUbdRffuuBBdlruu", "UbdlrLUbublrdu", "ublrdrlbULbrdrdUffbrf"};
+        String moves = m.randomScramble(possibleScrample);
+        System.out.println("randomScramble " + moves);
 
-        String moves = m.randomScramble(50);
-//        System.out.println("randomScramble " + moves);
+        String notWorkingScramble = "dfLBRuRuduBrFdbrFfuBUlrFBRlrLRDrldDfublrdfBflRUfuR";
 //        System.out.println("solver " + m.createBackwords(moves));
 
 
 //        String res = m.scrambleSolution(moves);
 //        System.out.println(res);
-        String[] possibleScrample = {"fublrfubffUBFlr","UlfRbbUddBlrfBB","UBLFbudrlUlFFdbuff", "UbdlrLUbdRffuuBBdlruu", "UbdlrLUbublrdu", "ublrdrlbULbrdrdUffbrf"};
-        m.doMoves(possibleScrample[0]);
+
+        m.doMoves(moves);
 //        printCube(m.getFullCube(), colorsDictionary);
 ////
 
@@ -101,8 +103,9 @@ public class test {
 //        System.out.println();
 //        System.out.println();
         m.doMoves(res);
-//        printCube(m.getFullCube(), colorsDictionary);
-//        System.out.println("llddfDDdBDffUFufbUBlULbuBluLruRrURlULbUBLUlUfUUFFufurURRurubUBBubulULuFufurURuBubulULuLulufUFURurubUBRurubUBuRurubUBulufUFLuufuFufuuFufuFufuuFuuFlFrrfLFrrffuuuffufuFUFUFuFffufuFUFUFuF" == res);
+        printCube(m.getFullCube(), colorsDictionary);
+//        System.out.println("llddfDDdBDffUFufbUBlULbuBluLruRrURlULbUBLUlUfUUFFufurURRurubUBBubulULuFufurURuBubulULuLulufUFURurubUBRurubUBuRurubUBulufUFLuufuFufuuFufuFufuuFuuFlFrrfLFrrffuuuffufuFUFUFuFffufuFUFUFuF".equals(res));
+//        System.out.println("llddfDDdBDffUFufbUBlULbuBluLruRrURlULbUBLUlUfUUFFufurURRurubUBBubulULuFufurURuBubulULuLulufUFURurubUBRurubUBuRurubUBulufUFLuufuFufuuFufuFufuuFuuFlFrrfLFrrffuuuffufuFUFUFuFffufuFUFUFuF".equals("llddfDDdBDffUFufbUBlULbuBluLruRrURlULbUBLUlUfUUFFufurURRurubUBBubulULuFufurURuBubulULuLulufUFURurubUBRurubUBuRurubUBulufUFLuufuFufuuFufuFufuuFuuFlFrrfLFrrffuuuffufuFUFUFuFffufuFUFUFuF"));
 
 //        System.out.println();
 //        System.out.println();

@@ -64,7 +64,7 @@ public class SolverLevel2 {
                     this.fullCube.front(true);
                     this.fullCube.up(false);
                     this.fullCube.front(false);
-//                    result += "uLulufUF";
+                    result += "uLulufUF";
                 }
                 else if(this.fullCube.getCube()[SIDES.YELLOW.ordinal()].getCubie(0,1) == Color.GREEN && this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0,1) == Color.ORANGE)
                 {

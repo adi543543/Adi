@@ -31,7 +31,7 @@ public class SolverLevel41 {
 
     public String firstAlgorithm(String faces){
         String result = "";
-        System.out.println(faces);
+//        System.out.println(faces);
         switch (faces){
             case "gr":
                 this.fullCube.front(false);
@@ -170,11 +170,10 @@ public class SolverLevel41 {
     public String solveThirdLayer(){
         String result = "";
         while (this.fullCube.isSolved() == false){
-            System.out.println("solveThirdLayer!");
-            test.printCube(this.fullCube, test.colorsDictionary);
+//            System.out.println("solveThirdLayer!");
             Color completeRow = isAndWhichCompleteRow();
             if(completeRow != Color.BLACK) {
-                System.out.println("full row!!!!!!!!!!!!!");
+//                System.out.println("full row!!!!!!!!!!!!!");
                 result += moveToSecondAlgorithm();
                 if (isSecondAlgorithm()) {
                     if (completeRow == Color.ORANGE) {
@@ -191,7 +190,7 @@ public class SolverLevel41 {
                     }
                 }
                 else{
-                    System.out.println("only row!!");
+//                    System.out.println("only row!!");
                     if (completeRow == Color.ORANGE) {
                         result += firstAlgorithm("gr"); // FIRST ALGORITHM
                     }
@@ -300,14 +299,11 @@ public class SolverLevel41 {
             result += "u";
             i++;
             if (i > 4){
-                System.out.println("bag in full face______________");
                 break;
             }
 
         }
-        System.out.println("full cube face______________");
-        test.printCube(this.fullCube, test.colorsDictionary);
-
+//        System.out.println("full cube face______________");
         return result;
     }
 
@@ -356,6 +352,12 @@ public class SolverLevel41 {
                 result += "u";
             }
         }
+        if (isOnlyZebras()){
+            this.fullCube.up(true);
+            result += "u";
+        }
+        System.out.println("_______________________moveToZebra!______________________");
+        test.printCube(this.fullCube, test.colorsDictionary);
         return result;
     }
 
@@ -363,33 +365,32 @@ public class SolverLevel41 {
         String result = "";
         result += moveToZebra(zebraColor);
         if (zebraColor == Color.RED){
-            while(this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, 0) != Color.RED && this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.RED){
-                this.fullCube.up(true);
-                result += "u";
-            }
-            System.out.println("zebraaaaaaaaaa");
-            test.printCube(this.fullCube, test.colorsDictionary);
+//            while(this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, 0) != Color.RED && this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.RED){
+//                this.fullCube.up(true);
+//                result += "u";
+//            }
+//            System.out.println("zebraaaaaaaaaa");
             result += firstAlgorithm("bo");
         }
         else if (zebraColor == Color.BLUE){
-            while(this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, 0) != Color.BLUE && this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.BLUE){
-                this.fullCube.up(true);
-                result += "u";
-            }
+//            while(this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, 0) != Color.BLUE && this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.BLUE){
+//                this.fullCube.up(true);
+//                result += "u";
+//            }
             result += firstAlgorithm("og");
         }
         else if (zebraColor == Color.ORANGE){
-            while(this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, 0) != Color.ORANGE && this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.ORANGE){
-                this.fullCube.up(true);
-                result += "u";
-            }
+//            while(this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, 0) != Color.ORANGE && this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.ORANGE){
+//                this.fullCube.up(true);
+//                result += "u";
+//            }
             result += firstAlgorithm("gr");
         }
         else { // GREEN
-            while(this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, 0) != Color.GREEN && this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.GREEN){
-                this.fullCube.up(true);
-                result += "u";
-            }
+//            while(this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, 0) != Color.GREEN && this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0, this.sizeOfCube.getSizeOfCube() - 1) != Color.GREEN){
+//                this.fullCube.up(true);
+//                result += "u";
+//            }
             result += firstAlgorithm("rb");
         }
         return result;
@@ -418,5 +419,21 @@ public class SolverLevel41 {
             result += firstAlgorithm("rb");
         }
         return result;
+    }
+
+    public boolean isOnlyZebras(){
+        if (this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,0) != this.fullCube.getCube()[SIDES.RED.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1)){
+            return false;
+        }
+        else if (this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0,0) != this.fullCube.getCube()[SIDES.BLUE.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1)){
+            return false;
+        }
+        else if (this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0,0) != this.fullCube.getCube()[SIDES.ORANGE.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1)){
+            return false;
+        }
+        else if (this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0,0) != this.fullCube.getCube()[SIDES.GREEN.ordinal()].getCubie(0,this.sizeOfCube.getSizeOfCube() - 1)){
+            return false;
+        }
+        return true;
     }
 }
