@@ -119,26 +119,26 @@ public class Model {
 
     public String tryAl(){
         this.al1 = new SolverLevel1(this.fullCube.getCube(), this.sizeOfCube.getSizeOfCube());
-        String solution = this.al1.createCross();
+        String solution = "";
         String solver = this.al1.createCross();
         if (solver.length() != 0){
             solution += solver;
         }
 
-        doMoves(solution);
-        System.out.println();
-        System.out.println("compareCubes createCross-" + compareCubes(this.al1.getFullCube(), this.fullCube));
-        System.out.println();
+//        doMoves(solution);
+//        System.out.println();
+//        System.out.println("compareCubes createCross-" + compareCubes(this.al1.getFullCube(), this.fullCube));
+//        System.out.println();
 
         solver = this.al1.createWhiteFace();
         if (solver.length() != 0){
             solution += solver;
         }
 
-        doMoves(solution);
-        System.out.println();
-        System.out.println("compareCubes createWhiteFace-" + compareCubes(this.al1.getFullCube(), this.fullCube));
-        System.out.println();
+//        doMoves(solution);
+//        System.out.println();
+//        System.out.println("compareCubes createWhiteFace-" + compareCubes(this.al1.getFullCube(), this.fullCube));
+//        System.out.println();
 
         this.al2 = new SolverLevel2(this.al1.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
         solver = this.al2.createSecondRow();
@@ -147,10 +147,10 @@ public class Model {
         }
 
 
-        doMoves(solution);
-        System.out.println();
-        System.out.println("compareCubes createSecondRow-" + compareCubes(this.al2.getFullCube(), this.fullCube));
-        System.out.println();
+//        doMoves(solution);
+//        System.out.println();
+//        System.out.println("compareCubes createSecondRow-" + compareCubes(this.al2.getFullCube(), this.fullCube));
+//        System.out.println();
 
         this.al3 = new SolverLevel3(this.al2.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
         solver = this.al3.createYellowCross();
@@ -158,20 +158,20 @@ public class Model {
             solution += solver;
         }
 
-        doMoves(solution);
-        System.out.println();
-        System.out.println("compareCubes createYellowCross-" + compareCubes(this.al3.getFullCube(), this.fullCube));
-        System.out.println();
+//        doMoves(solution);
+//        System.out.println();
+//        System.out.println("compareCubes createYellowCross-" + compareCubes(this.al3.getFullCube(), this.fullCube));
+//        System.out.println();
 
         solver = this.al3.createYellowFace();
         if (solver.length() != 0){
             solution += solver;
         }
 
-        doMoves(solution);
-        System.out.println();
-        System.out.println("compareCubes createYellowFace-" + compareCubes(this.al3.getFullCube(), this.fullCube));
-        System.out.println();
+//        doMoves(solution);
+//        System.out.println();
+//        System.out.println("compareCubes createYellowFace-" + compareCubes(this.al3.getFullCube(), this.fullCube));
+//        System.out.println();
 
         this.al4 = new SolverLevel4(this.al3.getFullCube().getCube(), this.sizeOfCube.getSizeOfCube());
         solver = this.al4.solveThirdLayer();
@@ -179,10 +179,10 @@ public class Model {
             solution += solver;
         }
 
-        doMoves(solution);
-        System.out.println();
-        System.out.println("compareCubes createYellowCross-" + compareCubes(this.al4.getFullCube(), this.fullCube));
-        System.out.println();
+//        doMoves(solution);
+//        System.out.println();
+//        System.out.println("compareCubes createYellowCross-" + compareCubes(this.al4.getFullCube(), this.fullCube));
+//        System.out.println();
 
         System.out.println("____________________End algorithm in Model____________________");
         return solution;
@@ -241,4 +241,18 @@ public class Model {
         return true;
     }
 
+    public String createBackwords(String str){
+        String solved = "";
+
+        for (int i = str.length() - 1; i >= 0; i--){
+            if (Character.isLowerCase(str.charAt(i))){
+                solved += Character.toUpperCase(str.charAt(i));
+            }
+            else {
+                solved += Character.toLowerCase(str.charAt(i));
+            }
+        }
+
+        return solved;
+    }
 }

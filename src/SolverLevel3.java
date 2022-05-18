@@ -44,6 +44,8 @@ public class SolverLevel3 {
             this.fullCube.left(false);
             result += "lufUFL";
         }
+        System.out.println("________Yellow cross!_______");
+        test.printCube(this.fullCube, test.colorsDictionary);
         return result;
     }
 
@@ -82,9 +84,9 @@ public class SolverLevel3 {
     }
 
     public String createYellowFace(){
-        System.out.println();
-        System.out.println();
-        System.out.println("hellooooooooooo");
+//        System.out.println();
+//        System.out.println();
+//        System.out.println("hellooooooooooo");
 
         String result = "";
         while (this.fullCube.getCube()[SIDES.YELLOW.ordinal()].checkSameColor(Color.YELLOW) == false){
@@ -103,9 +105,10 @@ public class SolverLevel3 {
             this.fullCube.front(false);
             result += "fuFufuuF";
 
-            System.out.println("hiiiiiii");
+//            System.out.println("hiiiiiii");
         }
-        System.out.println("____________________End algorithm____________________");
+
+        System.out.println("________complete yellow face!_______");
         test.printCube(this.fullCube, test.colorsDictionary);
         return result;
     }
@@ -175,10 +178,6 @@ public class SolverLevel3 {
     }
 
     public boolean isInState(){
-        if (isFirstState()){
-            System.out.println("isFirstState");
-
-        }
         if (isFirstState() == true || isSecondState() == true || isThirdState() == true || isFourthState() == true ){
             return true;
         }

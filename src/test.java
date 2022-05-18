@@ -72,16 +72,20 @@ public class test {
 //        printFace(f, colorsDictionary);
 
         Model m = new Model(3);
+
+
         String moves = m.randomScramble(50);
-//        System.out.println(moves);
+//        System.out.println("randomScramble " + moves);
+//        System.out.println("solver " + m.createBackwords(moves));
+
 
 //        String res = m.scrambleSolution(moves);
 //        System.out.println(res);
         String[] possibleScrample = {"fublrfubffUBFlr","UlfRbbUddBlrfBB","UBLFbudrlUlFFdbuff", "UbdlrLUbdRffuuBBdlruu", "UbdlrLUbublrdu", "ublrdrlbULbrdrdUffbrf"};
-        m.doMoves(moves);
+        m.doMoves(possibleScrample[0]);
 //        printCube(m.getFullCube(), colorsDictionary);
 ////
-//        System.out.println();
+
 //        System.out.println("scramble cube!!!!!!!!");
 //        System.out.println();
 
@@ -92,12 +96,13 @@ public class test {
 
 
         String res = m.tryAl();
-        System.out.println("solution- " + res);
-        System.out.println("Num of moves- " + res.length());
-        System.out.println();
-        System.out.println();
+//        System.out.println("solution- " + res);
+//        System.out.println("Num of moves- " + res.length());
+//        System.out.println();
+//        System.out.println();
         m.doMoves(res);
-        printCube(m.getFullCube(), colorsDictionary);
+//        printCube(m.getFullCube(), colorsDictionary);
+//        System.out.println("llddfDDdBDffUFufbUBlULbuBluLruRrURlULbUBLUlUfUUFFufurURRurubUBBubulULuFufurURuBubulULuLulufUFURurubUBRurubUBuRurubUBulufUFLuufuFufuuFufuFufuuFuuFlFrrfLFrrffuuuffufuFUFUFuFffufuFUFUFuF" == res);
 
 //        System.out.println();
 //        System.out.println();
